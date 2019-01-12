@@ -1,3 +1,8 @@
+const iniState = {
+    json :null,
+    loading: true
+}
+
 const show = ( state = {}, action ) => {
     // return state;
     switch(action.type){
@@ -7,6 +12,12 @@ const show = ( state = {}, action ) => {
         case 'FIND_ERROR':
             console.log('info error', action.err);
             return state;
+        case 'RECEIVE_POSTS':
+            // console.log(action.json);
+            // console.log(state);
+            return {
+                ...state, json:action.json, loading: false
+            };
         default:
             return state;
     }

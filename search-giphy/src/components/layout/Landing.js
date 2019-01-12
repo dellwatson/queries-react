@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-export default class Landing extends Component {
+
+class Landing extends Component {
+    
   render() {
+      console.log(this.props)
     return (
       <div>
         
@@ -9,3 +13,12 @@ export default class Landing extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+    // console.log(state);
+    return {
+        dataImg : state.json
+    }
+}
+
+export default connect(mapStateToProps)(Landing);

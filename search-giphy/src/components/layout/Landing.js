@@ -13,7 +13,7 @@ class Landing extends Component {
 
     handleChange = (e) => {
         this.setState({
-            query: e.target.value
+            query: this.search.value
         },() => {
             this.props.getInfo(this.state.query)
         })
@@ -29,6 +29,10 @@ class Landing extends Component {
                 <form>
                     <input 
                         placeholder="Search for..." 
+                        ref={input => {
+                            console.log()
+                            this.search = input
+                        }} 
                         id="query" 
                         onChange={this.handleChange} 
                         />

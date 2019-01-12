@@ -1,0 +1,1 @@
+// export default const apiKey = '5TUqp9G5hAZiuT7QPGfVHdMJ2hntCN6Z';

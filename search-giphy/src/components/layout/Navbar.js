@@ -12,9 +12,12 @@ class Navbar extends Component {
   handleChange = () => {
     this.setState({
       query: this.search.value
-    })
-    this.props.getInfo(this.state.query)
-    // console.log("hey")
+    }, () => {
+      this.props.getInfo(this.state.query)
+      // console.log(this.state)
+      }
+    )
+    
 
   }
 

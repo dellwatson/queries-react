@@ -1,17 +1,17 @@
-const iniState = {
+const initState = {
     json :null,
     loading: true
 }
 
-const show = ( state = {}, action ) => {
+const show = ( state = initState, action ) => {
     // return state;
     switch(action.type){
-        case 'GET_INFO':
-            console.log('here the info', action.info);
-            return state;
-        case 'FIND_ERROR':
-            console.log('info error', action.err);
-            return state;
+        // case 'GET_INFO':
+        //     console.log('here the info', action.info);
+        //     return state;
+        // case 'FIND_ERROR':
+        //     console.log('info error', action.err);
+        //     return state;
         case 'RECEIVE_POSTS':
             // console.log(action.json);
             // console.log(state);

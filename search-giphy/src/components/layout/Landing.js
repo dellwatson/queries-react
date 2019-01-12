@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getInfo } from '../../store/actions/searchActions'
-import PostImage from '../post/PostImage'
 import PostLists from '../post/PostLists'
+// import SearchBar from '../search/SearchBar'
 
 
 
@@ -11,26 +11,30 @@ class Landing extends Component {
         query: ""
         }
 
-    handleChange = () => {
-        this.setState({ query: this.search.value },
-             () => { this.props.getInfo(this.state.query) })
+    handleChange = (e) => {
+        this.setState({
+            query: e.target.value
+        },() => {
+            this.props.getInfo(this.state.query)
+        })
     }
 
   render() {
     const { dataImg } = this.props;
+    console.log(this.state.query)
 
     return (
         <div>
-            <form>
-                <input 
-                    placeholder="Search for..." 
-                    ref={input => this.search = input} 
-                    id="search" 
-                    onChange={this.handleChange} 
-                    onKeyPress={this.handlePress}
-                    />
-                <p>{this.state.query}</p>
-            </form>   
+            <div>
+                <form>
+                    <input 
+                        placeholder="Search for..." 
+                        id="query" 
+                        onChange={this.handleChange} 
+                        />
+                    <p>{this.state.query}</p>
+                </form> 
+            </div>
 
             <div className="dashboard container">
                 <PostLists dataImg={dataImg} />

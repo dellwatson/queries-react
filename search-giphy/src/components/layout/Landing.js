@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { getInfo } from '../../store/actions/searchActions'
-import PostImage from '../post/PostImage'
 import PostLists from '../post/PostLists'
-
-
 
 class Landing extends Component {
     state = {
         query: ""
         }
 
-    handleChange = () => {
-        this.setState({ query: this.search.value },
-             () => { this.props.getInfo(this.state.query) })
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id] : e.target.value
+        }, () => {
+            this.props.getInfo(this.state.query)
+        })
     }
 
   render() {
@@ -24,16 +24,14 @@ class Landing extends Component {
             <form>
                 <input 
                     placeholder="Search for..." 
-                    ref={input => this.search = input} 
-                    id="search" 
+                    id="query" 
                     onChange={this.handleChange} 
-                    onKeyPress={this.handlePress}
                     />
                 <p>{this.state.query}</p>
             </form>   
 
             <div className="dashboard container">
-                <PostLists dataImg={dataImg} />
+                <PostLists dataImg={dataImg}  />
             </div>
 
         </div>
@@ -48,6 +46,7 @@ const mapStateToProps = (state) => {
     }
 }
 
+//dispatch for search
 const mapDispatchToProps = (dispatch) => {
     // console.log(state)
     return {

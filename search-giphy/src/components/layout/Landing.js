@@ -15,13 +15,18 @@ class Landing extends Component {
             this.props.getInfo(this.state.query)
         })
     }
+    
+    handleSubmit = (e) => {
+        e.preventDefault()
+    }
 
   render() {
+    //   console.log(this.props)
     const { dataImg } = this.props;
 
     return (
         <div>
-            <form>
+            <form onSubmit={this.handleSubmit} >
                 <input 
                     placeholder="Search for..." 
                     id="query" 

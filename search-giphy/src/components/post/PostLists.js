@@ -1,5 +1,7 @@
 import React from 'react'
 import PostOne from './PostOne'
+import isEmpty from './is-empty'
+
 
 const PostLists = ({ dataImg }) => {
     const postImage = dataImg && dataImg.data.map((item,index) => {
@@ -8,7 +10,7 @@ const PostLists = ({ dataImg }) => {
 
   return (
     <div>
-      {postImage}
+      {!isEmpty(dataImg) ? postImage : null}      
     </div>
   )
 }

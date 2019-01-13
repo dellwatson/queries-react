@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PostLists from '../post/PostLists'
+import PostLists2 from '../post/PostLists2'
 
-const Favourite = ({ allFavs }) => {
+const Favourite = (props) => {
+  // console.log(props)
     // console.log(allFavs)
+    const { allFavs, match } = props
   return (
     <div>
-      {/* <PostLists dataImg={allFavs} /> */}
+      <PostLists2 dataImg={allFavs} match={match}/>
     </div>
   )
 }
@@ -14,10 +16,7 @@ const Favourite = ({ allFavs }) => {
 const mapStateToProps = (state) => {
     // console.log(state)
     return {
-        // allFavs: state.fav.faved,
-        allFavs: state.show.json
-        // show : state.show.json
-        //expecting get favs
+        allFavs: state.fav.faved
     }
 }
 export default connect(mapStateToProps)(Favourite)

@@ -8,14 +8,14 @@ const fav = ( state = initState, action ) => {
     switch(action.type){
         case 'LIKED':
             const newGif = action.gif
-            console.log("gif baru "+newGif);
+            // console.log("gif baru "+newGif);
             return {
                 // ...state, json:action.json, loading: false
                 ...state, faved:[...state.faved, newGif]
             };
         
         case 'REMOVE_LIKE':
-            console.log(action.gif)
+            // console.log(action.gif)
             const removeGif = action.gif
             const faved = state.faved;
 

@@ -3,11 +3,22 @@ import { connect } from 'react-redux'
 import { gifLiked, removeLike } from '../../store/actions/favActions';
 
 
-class PostOne extends Component {
-    state = {
-        loveOn: false,
-        hoverOn : false
+class PostOne2 extends Component {
+    constructor(props){
+        super(props)
+        if(this.props.match.url === '/fav'){
+            this.state = {
+                loveOn: true,
+                hoverOn:false
+            }
+        }else{
+            this.state = {
+                loveOn: false,
+                hoverOn : false
+            }
+        }
     }
+   
 
     hoverOn = () => {
         const loveOn = this.state.loveOn;
@@ -26,12 +37,11 @@ class PostOne extends Component {
 
     handleClick = () => {
         const loveOn = this.state.loveOn;
-        const gif = this.props.item.images.downsized.url
+        let gif = '';
+        this.props.match.url === '/' ? gif = this.props.item.images.downsized.url : gif = this.props.item
 
         //send url + id to reducer
-        // this.props.saveLike(this.props.item.id, this.item.images.downsized.url)
-        // gif = "" ,
-        //bug location = landing ? gif = item.downsized.url : gif = item.urlSaved
+    
         if(loveOn){
             this.props.removeLike(gif)
             this.setState({
@@ -45,14 +55,23 @@ class PostOne extends Component {
         }
     }
 
-  render() {
-    const { item, index, arrFavs } = this.props;
-    // console.log(this.props)
+    //component didmount setstate true if fav-location
+    // UNSAFE_componentWillMount(){
+    //     console.log("DIDMOUNT")
+    //     if(this.props.match.url === '/fav'){
+    //         this.setState({
+    //             loveOn:true
+    //         })
+    //     }
+    // }
 
-    // const itemSrc = "";
-    const itemSrc = item.images.downsized.url;
-    //check location page params
-    //(location = landing ) ? itemsrc = item.downsized.url : item.urlSaved
+  render() {
+    const { item, index, arrFavs, match } = this.props;
+    // console.log(this.props.item)
+
+    let itemSrc = "";
+    match.url === '/' ?  itemSrc = item.images.downsized.url :itemSrc = item 
+    // console.log(itemSrc + "<<hello item src")
 
     const border = arrFavs && arrFavs.map((urlFavs, index) => {
         if (urlFavs === itemSrc) {
@@ -73,6 +92,7 @@ class PostOne extends Component {
             />
           </div>  
           {this.state.loveOn ? border : null}
+          
           {!this.state.loveOn && this.state.hoverOn ? (<div>HI</div>) : null}
       </div>
     )
@@ -80,6 +100,7 @@ class PostOne extends Component {
 }
 
 const mapStateToProps = (state) => {
+    // console.log(state)
     return {
         arrFavs: state.fav.faved
         //show data yg disave
@@ -94,4 +115,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostOne)
+export default connect(mapStateToProps, mapDispatchToProps)(PostOne2)

@@ -1,49 +1,65 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { gifLiked } from '../../store/actions/favActions';
+import { gifLiked, removeLike } from '../../store/actions/favActions';
+
 
 class PostOne extends Component {
     state = {
         loveOn: false,
-        triggerHover : false
+        hoverOn : false
     }
 
-    handleHover = () => {
+    hoverOn = () => {
+        const loveOn = this.state.loveOn;
+        if (!loveOn){
+            console.log('BELOM DI LIKE')
+            this.setState({
+                hoverOn: true
+            })
+        }
         //checking loveOn true ? null : show XX( border remove, replace)
-        // const loveOn = this.state.loveOn;
-        // (!loveOn) ? 
+    }
+
+    hoverOff = () => {
+        this.setState({
+            hoverOn: false
+        })
     }
 
     handleClick = () => {
         const loveOn = this.state.loveOn;
         const gif = this.props.item.images.downsized.url
+
+        //send url + id to reducer
+        // this.props.saveLike(this.props.item.id, this.item.images.downsized.url)
+        // gif = "" ,
+        //bug location = landing ? gif = item.downsized.url : gif = item.urlSaved
+
+
+
         if(loveOn){
-            console.log('DISPATCH REMOVE')
+            this.props.removeLike(gif)
             this.setState({
                 loveOn: !loveOn
             });
-
         }else{
             this.props.saveLike(gif)
             this.setState({
                 loveOn: !loveOn
             });
         }
-        //send url + id to reducer
-        // this.props.saveLike(this.props.item.id, this.item.images.downsized.url)
-        // gif = "" ,
-        //bug location = landing ? gif = item.downsized.url : gif = item.urlSaved
     }
 
   render() {
-    console.log(this.state)
     const { item, index, arrFavs } = this.props;
+    // console.log(this.props)
+
     // const itemSrc = "";
     const itemSrc = item.images.downsized.url;
     //check location page params
     //(location = landing ) ? itemsrc = item.downsized.url : item.urlSaved
 
-    const border = arrFavs.map((urlFavs, index) => {
+    const border = arrFavs && arrFavs.map((urlFavs, index) => {
         if (urlFavs === itemSrc) {
             return (
                 <p className="red-text" key={index}> LIKED </p>
@@ -57,10 +73,12 @@ class PostOne extends Component {
             <img src={itemSrc} 
             alt={index} 
             onClick={this.handleClick} 
-            onMouseEnter={this.handleHover}
+            onMouseEnter={this.hoverOn}
+            onMouseLeave={this.hoverOff}
             />
           </div>  
-          {border}
+          {this.state.loveOn ? border : null}
+          {!this.state.loveOn && this.state.hoverOn ? (<div>HI</div>) : null}
       </div>
     )
   }
@@ -76,7 +94,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         //return click to faved
-        saveLike: (gif) => dispatch(gifLiked(gif))
+        saveLike: (gif) => dispatch(gifLiked(gif)),
+        removeLike: (gif) => dispatch(removeLike(gif))
     }
 }
 

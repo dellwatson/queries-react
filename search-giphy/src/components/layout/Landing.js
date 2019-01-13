@@ -22,7 +22,7 @@ class Landing extends Component {
 
   render() {
     //   console.log(this.props)
-    const { dataImg } = this.props;
+    const { dataImg, match } = this.props;
 
     return (
         <div>
@@ -36,7 +36,7 @@ class Landing extends Component {
             </form>   
 
             <div className="dashboard container">
-                <PostLists dataImg={dataImg}  />
+                <PostLists dataImg={dataImg} match={match} />
             </div>
 
         </div>

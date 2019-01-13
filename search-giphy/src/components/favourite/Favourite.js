@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PostLists2 from '../post/PostLists2'
+import PostLists from '../post/PostLists'
 
 const Favourite = (props) => {
   // console.log(props)
@@ -8,7 +8,7 @@ const Favourite = (props) => {
     const { allFavs, match } = props
   return (
     <div>
-      <PostLists2 dataImg={allFavs} match={match}/>
+      <PostLists dataImg={allFavs} match={match}/>
     </div>
   )
 }

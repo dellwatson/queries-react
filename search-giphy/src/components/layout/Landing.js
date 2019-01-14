@@ -25,19 +25,27 @@ class Landing extends Component {
     const { dataImg, match } = this.props;
 
     return (
-        <div>
-            <form onSubmit={this.handleSubmit} >
-                <input 
-                    placeholder="Search for..." 
-                    id="query" 
-                    onChange={this.handleChange} 
-                    />
-                <p>{this.state.query}</p>
-            </form>   
-
-            <div className="dashboard container">
-                <PostLists dataImg={dataImg} match={match} />
+        <div className="landing container">
+            <div className="row">
+                <div className="col s12">
+                    <div className="row">
+                        <div className="input-field col s12 m8 push-m2">
+                          {/* <form onSubmit={this.handleSubmit} > */}
+                            <input 
+                                type="text"
+                                placeholder="Search for..." 
+                                id="query" 
+                                onChange={this.handleChange} 
+                                />
+                            {/* </form>      */}
+                        </div>
+                    </div>
+                        
+                </div>
             </div>
+             
+
+                <PostLists dataImg={dataImg} match={match} />
 
         </div>
     )
@@ -45,7 +53,7 @@ class Landing extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
+    console.log(state);
     return {
         dataImg : state.show.json
     }

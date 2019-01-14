@@ -10,9 +10,9 @@ const fav = ( state = initState, action ) => {
             // console.log(action.gif)
             const removeGif = action.gif
             const faved = state.faved;
-            console.log("removed")
+            // console.log("removed")
             const updatedFav = faved.filter((val) =>{
-                console.log(val)
+                // console.log(val)
                 return removeGif !== val
             })
 

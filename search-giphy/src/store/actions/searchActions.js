@@ -11,7 +11,7 @@ export const getInfo = (info) => {
     return (dispatch, getState) => {
         // ...info send state(..info ?)search
         // dispatch({ type: 'GET_INFO', info});
-        fetch(`http://api.giphy.com/v1/gifs/search?q=${info}&api_key=${apiKey}&limit=3`)
+        fetch(`http://api.giphy.com/v1/gifs/search?q=${info}&api_key=${apiKey}&limit=8`)
             .then(res => res.json())
             .then((json) => dispatch(receivedPosts(json)))
             .catch(err => dispatch())

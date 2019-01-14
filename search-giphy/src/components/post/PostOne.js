@@ -18,13 +18,11 @@ class PostOne extends Component {
                 
             })
             if(typeof found === 'undefined'){
-                console.log('undefined url')
                 this.state = {
                     loveOn: false,
                     hoverOn:false
                 }
             }else{
-                console.log('url ada')
                 this.state = {
                     loveOn: true,
                     hoverOn:false
@@ -81,7 +79,7 @@ class PostOne extends Component {
     const { item, index, arrFavs, match } = this.props;
     let itemSrc = "";
     match.url === '/' ? 
-        itemSrc = item.images.downsized.url 
+        itemSrc = item.images.downsized.url
         :
         itemSrc = item 
 
@@ -92,24 +90,30 @@ class PostOne extends Component {
     
     return (
       <div>
-          <div className="container">
-            <img src={itemSrc} 
-            alt={index} 
-            onClick={this.handleClick} 
-            onMouseEnter={this.hoverOn}
-            onMouseLeave={this.hoverOff}
-            />
-          </div>  
-          
-          {typeof border !== 'undefined' ?
+          <div className="col l3 m6 s12">
+            <img 
+                    className="responsive-img"
+                    src={itemSrc} 
+                    alt={index} 
+                    onClick={this.handleClick} 
+                    onMouseEnter={this.hoverOn}
+                    onMouseLeave={this.hoverOff}
+                    width="200"
+                    height="100"
+                    overflow="hidden"
+                    
+                />
+          </div>
+              
+          {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)
                 :
-                null}
+                null} */}
 
-          {typeof border === 'undefined' && this.state.hoverOn ? 
+          {/* {typeof border === 'undefined' && this.state.hoverOn ? 
                 (<div>HI</div>) 
                 : 
-                null}
+                null} */}
       </div>
     )
   }

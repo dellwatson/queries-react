@@ -7,18 +7,23 @@ const PostLists = ({ dataImg, match }) => {
   return (
     <div className='container'>
         <div className="row">
-            {!isEmpty(dataImg) ? 
-                (match.url === '/' ?  
-                    dataImg.data.map((item,index) => {
-                        return (<PostOne item={item} key={index} match={match}/>)
-                    })
-                :
-                    dataImg.map((item,index) => {
-                        return (<PostOne item={item} key={index} match={match}/>)
-                    })
-                )
-                : null}
-            </div>
+            <ul>
+                <li>
+                    {!isEmpty(dataImg) ? 
+                    (match.url === '/' ?  
+                        dataImg.data.map((item,index) => {
+                            return (<PostOne item={item} key={index} match={match}/>)
+                        })
+                    :
+                        dataImg.map((item,index) => {
+                            return (<PostOne item={item} key={index} match={match}/>)
+                        })
+                    )
+                    : null}
+                </li>
+            </ul>
+            
+        </div>
     </div>
   )
 }

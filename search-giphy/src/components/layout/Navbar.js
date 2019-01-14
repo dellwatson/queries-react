@@ -4,14 +4,15 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = ()  => {
     return (
-      <div className="nav-wrapper">
+      <nav className="nav-wrapper grey darken-3">
+        <div className="brand-logo">  logo</div>
         <div className="container">
-          <ul>
-            <li><NavLink to='/' className="left">Home</NavLink></li>
-            <li><NavLink to='/fav'className="right">Favourite</NavLink></li>
+          <ul className="left">
+            <li><NavLink to='/' >Home</NavLink></li>
+            <li><NavLink to='/fav'>Favourite</NavLink></li>
           </ul>
         </div>
-      </div>
+      </nav>
     )
 }
 

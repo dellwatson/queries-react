@@ -21,47 +21,44 @@ class Landing extends Component {
     }
 
   render() {
-    //   console.log(this.props)
     const { dataImg, match } = this.props;
 
     return (
-        <div className="landing container">
-            <div className="row">
-                <div className="col s12">
-                    <div className="row">
-                        <div className="input-field col s12 m8 push-m2">
-                          {/* <form onSubmit={this.handleSubmit} > */}
-                            <input 
-                                type="text"
-                                placeholder="Search for..." 
-                                id="query" 
-                                onChange={this.handleChange} 
-                                />
-                            {/* </form>      */}
+        <section className="setion">
+            <div className="container">
+                <div className="row">
+                    <div className="col s12">
+                        <div className="row">
+                            <div className="input-field col s12 m8 push-m2">
+                            {/* <form onSubmit={this.handleSubmit} > */}
+                                <input 
+                                    type="text"
+                                    placeholder="Search for..." 
+                                    id="query" 
+                                    onChange={this.handleChange} 
+                                    />
+                                {/* </form>      */}
+                            </div>
                         </div>
+                            
                     </div>
-                        
                 </div>
+                
+                    <PostLists dataImg={dataImg} match={match} />
             </div>
-             
-
-                <PostLists dataImg={dataImg} match={match} />
-
-        </div>
+        </section>
+        
     )
   }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         dataImg : state.show.json
     }
 }
 
-//dispatch for search
 const mapDispatchToProps = (dispatch) => {
-    // console.log(state)
     return {
       getInfo : (info) => dispatch(getInfo(info))
     }

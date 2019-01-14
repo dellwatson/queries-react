@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import PostLists from '../post/PostLists'
 
 const Favourite = (props) => {
-  // console.log(props)
-    // console.log(allFavs)
-    const { allFavs, match } = props
+
+  const { allFavs, match } = props;
+
   return (
-    <div>
-      <PostLists dataImg={allFavs} match={match}/>
-    </div>
+    <section className="section">
+      <div className="container">
+        <div className="row">
+          <PostLists dataImg={allFavs} match={match}/>
+        </div>
+      </div> 
+    </section>
   )
 }
 

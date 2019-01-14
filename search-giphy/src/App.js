@@ -4,6 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar'
 import Landing from './components/layout/Landing'
 import Favourite from './components/favourite/Favourite';
+import Footer from './components/layout/Footer'
+
 
 class App extends Component {
   render() {
@@ -15,6 +17,7 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/fav" component={Favourite} />
             </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );

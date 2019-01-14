@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { gifLiked, removeLike } from '../../store/actions/favActions';
+import Spinner from '../common/Spinner';
 
 
 class PostOne extends Component {
@@ -83,14 +84,15 @@ class PostOne extends Component {
         :
         itemSrc = item 
 
-    const border = arrFavs && arrFavs.find((item) => {
-        return item === itemSrc
-    })
+    // const border = arrFavs && arrFavs.find((item) => {
+    //     return item === itemSrc
+    // })
 
-    
-    return (
-      <div>
-          <div className="col l3 m6 s12">
+    let postImage;
+    if( item === null || Object.keys(item).length === 0){
+        postImage = <Spinner />
+    }else{
+        postImage = (
             <img 
                     className="responsive-img"
                     src={itemSrc} 
@@ -100,10 +102,16 @@ class PostOne extends Component {
                     onMouseLeave={this.hoverOff}
                     width="200"
                     height="100"
-                    overflow="hidden"
-                    
+                    overflow="hidden"            
                 />
-          </div>
+        )
+    }
+
+    
+    return (
+      <div>
+          <div className="col l3 m6 s12">
+            {postImage}
               
           {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)
@@ -114,22 +122,22 @@ class PostOne extends Component {
                 (<div>HI</div>) 
                 : 
                 null} */}
+            
+            </div>
+            
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
     return {
         arrFavs: state.fav.faved
-        //show data yg disave
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        //return click to faved
         saveLike: (gif) => dispatch(gifLiked(gif)),
         removeLike: (gif) => dispatch(removeLike(gif))
     }

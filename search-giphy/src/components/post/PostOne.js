@@ -6,14 +6,17 @@ import { gifLiked, removeLike } from '../../store/actions/favActions';
 class PostOne extends Component {
     constructor(props){
         super(props)
-        console.log('INIT STATE')
-        if(this.props.match.url === '/'){
-            let currUrl = this.props.item.images.downsized.url
-            let found = this.props.arrFavs && this.props.arrFavs.find(item => {
+        if(this.props.match.url === '/fav'){
+            this.state = {
+                loveOn: true,
+                hoverOn: false
+            } 
+        }else{
+            const currUrl = this.props.item.images.downsized.url
+            const found = this.props.arrFavs && this.props.arrFavs.find(item => {
                 return item === currUrl;
                 
             })
-
             if(typeof found === 'undefined'){
                 console.log('undefined url')
                 this.state = {
@@ -26,11 +29,6 @@ class PostOne extends Component {
                     loveOn: true,
                     hoverOn:false
                 }
-            }
-        }else{
-            this.state = {
-                loveOn: true,
-                hoverOn : false
             }
         }
     }
@@ -51,73 +49,47 @@ class PostOne extends Component {
     }
 
     handleClick = () => {
-        const loveOn = this.state.loveOn;
         let gif = '';
-        this.props.match.url === '/' ? 
-            gif = this.props.item.images.downsized.url
-            : 
-            gif = this.props.item
-
         //send url + id to reducer and true
-    
-        if(loveOn){
+        if(this.props.match.url === '/fav'){
+            gif = this.props.item
             this.props.removeLike(gif)
             this.setState({
                 loveOn: false
             });
         }else{
-            this.props.saveLike(gif)
-            this.setState({
-                loveOn: true
-            });
+            gif = this.props.item.images.downsized.url
+            const found = this.props.arrFavs && this.props.arrFavs.find(item => {
+                return item === gif
+            })
+            if(typeof found === 'undefined'){
+                this.props.saveLike(gif)
+                this.setState({
+                    loveOn: true
+                });
+            }else{
+                this.props.removeLike(gif)
+                this.setState({
+                    loveOn: false
+                });
+            }
         }
-    }
 
-    componentDidUpdate(){
-        // console.log("DID UPDATE")
-    }
-
-    componentDidMount(){
-        console.log('DID MOUNNNT')
-    }
-
-    UNSAFE_componentWillReceiveProps(){
-        // console.log("HEYEYY")
-        // if(this.props.match.url === '/'){
-        //     let currUrl = this.props.item.images.downsized.url
-        //     let found = this.props.arrFavs && this.props.arrFavs.find(item => {
-        //         return item === currUrl;
-        //     })
-        //     if(typeof found !== 'undefined'){
-        //         this.setState({
-        //             loveOn: true
-        //         })
-        //     }else{
-        //         return null
-        //     }
-        // }else{
-        //     return null
-        // }
     }
 
   render() {
     const { item, index, arrFavs, match } = this.props;
-    // console.log(this.props.item)
-
     let itemSrc = "";
     match.url === '/' ? 
         itemSrc = item.images.downsized.url 
         :
         itemSrc = item 
 
-    const border = arrFavs && arrFavs.map((urlFavs, index) => {
-        if (urlFavs === itemSrc) {
-            return (
-                <p className="red-text" key={index}> LIKED </p>
-            )
-        }   
+    const border = arrFavs && arrFavs.find((item) => {
+        return item === itemSrc
     })
 
+    
     return (
       <div>
           <div className="container">
@@ -128,9 +100,13 @@ class PostOne extends Component {
             onMouseLeave={this.hoverOff}
             />
           </div>  
-          {this.state.loveOn ? border : null}
           
-          {!this.state.loveOn && this.state.hoverOn ? 
+          {typeof border !== 'undefined' ?
+                (<p className="red-text">LIKED</p>)
+                :
+                null}
+
+          {typeof border === 'undefined' && this.state.hoverOn ? 
                 (<div>HI</div>) 
                 : 
                 null}

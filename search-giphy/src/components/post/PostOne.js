@@ -6,20 +6,35 @@ import { gifLiked, removeLike } from '../../store/actions/favActions';
 class PostOne extends Component {
     constructor(props){
         super(props)
-        if(this.props.match.url === '/fav'){
-            this.state = {
-                loveOn: true,
-                hoverOn:false
+        console.log('INIT STATE')
+        if(this.props.match.url === '/'){
+            let currUrl = this.props.item.images.downsized.url
+            let found = this.props.arrFavs && this.props.arrFavs.find(item => {
+                return item === currUrl;
+                
+            })
+
+            if(typeof found === 'undefined'){
+                console.log('undefined url')
+                this.state = {
+                    loveOn: false,
+                    hoverOn:false
+                }
+            }else{
+                console.log('url ada')
+                this.state = {
+                    loveOn: true,
+                    hoverOn:false
+                }
             }
         }else{
             this.state = {
-                loveOn: false,
+                loveOn: true,
                 hoverOn : false
             }
         }
     }
    
-
     hoverOn = () => {
         const loveOn = this.state.loveOn;
         if (!loveOn){
@@ -38,40 +53,62 @@ class PostOne extends Component {
     handleClick = () => {
         const loveOn = this.state.loveOn;
         let gif = '';
-        this.props.match.url === '/' ? gif = this.props.item.images.downsized.url : gif = this.props.item
+        this.props.match.url === '/' ? 
+            gif = this.props.item.images.downsized.url
+            : 
+            gif = this.props.item
 
-        //send url + id to reducer
+        //send url + id to reducer and true
     
         if(loveOn){
             this.props.removeLike(gif)
             this.setState({
-                loveOn: !loveOn
+                loveOn: false
             });
         }else{
             this.props.saveLike(gif)
             this.setState({
-                loveOn: !loveOn
+                loveOn: true
             });
         }
     }
 
-    //component didmount setstate true if fav-location
-    // UNSAFE_componentWillMount(){
-    //     console.log("DIDMOUNT")
-    //     if(this.props.match.url === '/fav'){
-    //         this.setState({
-    //             loveOn:true
-    //         })
-    //     }
-    // }
+    componentDidUpdate(){
+        // console.log("DID UPDATE")
+    }
+
+    componentDidMount(){
+        console.log('DID MOUNNNT')
+    }
+
+    UNSAFE_componentWillReceiveProps(){
+        // console.log("HEYEYY")
+        // if(this.props.match.url === '/'){
+        //     let currUrl = this.props.item.images.downsized.url
+        //     let found = this.props.arrFavs && this.props.arrFavs.find(item => {
+        //         return item === currUrl;
+        //     })
+        //     if(typeof found !== 'undefined'){
+        //         this.setState({
+        //             loveOn: true
+        //         })
+        //     }else{
+        //         return null
+        //     }
+        // }else{
+        //     return null
+        // }
+    }
 
   render() {
     const { item, index, arrFavs, match } = this.props;
     // console.log(this.props.item)
 
     let itemSrc = "";
-    match.url === '/' ?  itemSrc = item.images.downsized.url :itemSrc = item 
-    // console.log(itemSrc + "<<hello item src")
+    match.url === '/' ? 
+        itemSrc = item.images.downsized.url 
+        :
+        itemSrc = item 
 
     const border = arrFavs && arrFavs.map((urlFavs, index) => {
         if (urlFavs === itemSrc) {
@@ -93,7 +130,10 @@ class PostOne extends Component {
           </div>  
           {this.state.loveOn ? border : null}
           
-          {!this.state.loveOn && this.state.hoverOn ? (<div>HI</div>) : null}
+          {!this.state.loveOn && this.state.hoverOn ? 
+                (<div>HI</div>) 
+                : 
+                null}
       </div>
     )
   }

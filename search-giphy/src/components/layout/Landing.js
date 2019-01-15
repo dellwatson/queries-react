@@ -47,7 +47,7 @@ class Landing extends Component {
 {dataImg && dataImg.data.map((item,index) => {
     return (
 
-        // <div className="box-img">
+        <div className="box-img">
 
 
         <img 
@@ -58,7 +58,9 @@ alt={index}
 
 // overflow="hidden"            
 />
-// </div>
+
+
+ </div>
 
     
     

@@ -2,10 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 
-const Navbar = (props)  => {
+const Navbar = ({ fav })  => {
 
-  const { fav } = props
-  
     return (
       <nav className="nav-wrapper white">
         <div className="container">
@@ -16,8 +14,8 @@ const Navbar = (props)  => {
           <div className="container">
             <ul className="left ">
               <li><NavLink to='/' className="nav-home " >Search</NavLink></li>
-              <li><NavLink to='/favourite'className="nav-fav">Favourites</NavLink></li>
-              <li className="black-text">{fav.length>0 ? `(${fav.length})`:null} </li>
+              <li><NavLink to='/favourite'className="nav-fav">Favourites {fav.length>0 ? `(${fav.length})`:null} </NavLink></li>
+              <li className="black-text"></li>
             </ul>
           </div>
         </div>

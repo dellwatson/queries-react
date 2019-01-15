@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { gifLiked, removeLike } from '../../store/actions/favActions';
 import Spinner from '../common/Spinner';
 
-
 class PostOne extends Component {
     constructor(props){
         super(props)
@@ -14,10 +13,7 @@ class PostOne extends Component {
             } 
         }else{
             const currUrl = this.props.item.images.downsized.url
-            const found = this.props.arrFavs && this.props.arrFavs.find(item => {
-                return item === currUrl;
-                
-            })
+            const found = this.props.arrFavs && this.props.arrFavs.find(item => item === currUrl)
             if(typeof found === 'undefined'){
                 this.state = {
                     loveOn: false,
@@ -49,7 +45,6 @@ class PostOne extends Component {
 
     handleClick = () => {
         let gif = '';
-        //send url + id to reducer and true
         if(this.props.match.url === '/favourite'){
             gif = this.props.item
             this.props.removeLike(gif)
@@ -58,9 +53,7 @@ class PostOne extends Component {
             });
         }else{
             gif = this.props.item.images.downsized.url
-            const found = this.props.arrFavs && this.props.arrFavs.find(item => {
-                return item === gif
-            })
+            const found = this.props.arrFavs && this.props.arrFavs.find(item => item === gif)
             if(typeof found === 'undefined'){
                 this.props.saveLike(gif)
                 this.setState({
@@ -73,7 +66,6 @@ class PostOne extends Component {
                 });
             }
         }
-
     }
 
   render() {
@@ -84,9 +76,7 @@ class PostOne extends Component {
         :
         itemSrc = item 
 
-    const border = arrFavs && arrFavs.find((item) => {
-        return item === itemSrc
-    })
+    const border = arrFavs && arrFavs.find(item => item === itemSrc)
 
     let postImage;
     if( item === null || Object.keys(item).length === 0){
@@ -94,7 +84,6 @@ class PostOne extends Component {
     }else{
         postImage = (
             <img 
-                // className="responsive-img"
                 src={itemSrc} 
                 alt={index} 
                 onClick={this.handleClick} 
@@ -106,23 +95,19 @@ class PostOne extends Component {
 
     
     return (
-    <div>
-        {/* <div className="box-img col l4 m6 s12"> */}
-        {postImage}
-        {/* <i className="material-icons this-icon">favorite_border</i>
-        <i className="material-icons this-icon">favorite</i> */}
+        <div>
+            {postImage}
+                {typeof border !== 'undefined' ?
+                (<i className="material-icons this-icon">favorite</i>)
+                :
+                null}
 
-        {typeof border !== 'undefined' ?
-            (<i className="material-icons this-icon">favorite</i>)
-            :
-            null}
-
-        {typeof border === 'undefined' && this.state.hoverOn ? 
-            (<i className="material-icons this-icon">favorite_border</i>) 
-            : 
-            null}
+                {typeof border === 'undefined' && this.state.hoverOn ? 
+                (<i className="material-icons this-icon">favorite_border</i>) 
+                : 
+                null}
         </div>
-    )
+        )
   }
 }
 

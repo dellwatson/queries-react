@@ -8,15 +8,11 @@ const PostLists = ({ dataImg, match }) => {
     <div className="container">
         <div className="grid-box">
             {!isEmpty(dataImg) ? 
-            (match.url === '/' ?  
-                dataImg.data.map((item,index) => {
-                    return (<PostOne item={item} key={index} match={match}/>)
-                })
-            :
-                dataImg.map((item,index) => {
-                    return (<PostOne item={item} key={index} match={match}/>)
-                })
-            )
+                (match.url === '/' ?  
+                    dataImg.data.map((item,index) => (<PostOne item={item} key={index} match={match}/>))
+                    :
+                    dataImg.map((item,index) =>  (<PostOne item={item} key={index} match={match}/>))
+                )
             : null}
         </div>
     </div>

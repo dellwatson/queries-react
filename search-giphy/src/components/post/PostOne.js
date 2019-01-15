@@ -94,25 +94,21 @@ class PostOne extends Component {
     }else{
         postImage = (
             <img 
-                    className="responsive-img"
-                    src={itemSrc} 
-                    alt={index} 
-                    onClick={this.handleClick} 
-                    onMouseEnter={this.hoverOn}
-                    onMouseLeave={this.hoverOff}
-                    width="200"
-                    height="100"
-                    overflow="hidden"            
-                />
+                // className="responsive-img"
+                src={itemSrc} 
+                alt={index} 
+                onClick={this.handleClick} 
+                onMouseEnter={this.hoverOn}
+                onMouseLeave={this.hoverOff}
+            />
         )
     }
 
     
     return (
-      <div>
-          <div className="col l3 m6 s12">
-            {postImage}
-              
+    <div>
+        <div className="box-img col l4 m6 s12">
+        {postImage}
           {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)
                 :
@@ -122,10 +118,8 @@ class PostOne extends Component {
                 (<div>HI</div>) 
                 : 
                 null} */}
-            
-            </div>
-            
-      </div>
+        </div>
+    </div>
     )
   }
 }

@@ -43,8 +43,7 @@ class Landing extends Component {
                             
                     </div>
                 </div>
-                
-                    <PostLists dataImg={dataImg} match={match} />
+                <PostLists dataImg={dataImg} match={match} />
             </div>
         </section>
         

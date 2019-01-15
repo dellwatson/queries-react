@@ -4,11 +4,9 @@ import isEmpty from './is-empty'
 
 const PostLists = ({ dataImg, match }) => {
 
+
   return (
-    <div className='container'>
-        <div className="row">
-            <ul>
-                <li>
+            <div className='row'>
                     {!isEmpty(dataImg) ? 
                     (match.url === '/' ?  
                         dataImg.data.map((item,index) => {
@@ -20,11 +18,8 @@ const PostLists = ({ dataImg, match }) => {
                         })
                     )
                     : null}
-                </li>
-            </ul>
+            </div>
             
-        </div>
-    </div>
   )
 }
 

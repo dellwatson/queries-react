@@ -7,12 +7,11 @@ const Favourite = (props) => {
   const { allFavs, match } = props;
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="row">
-          <PostLists dataImg={allFavs} match={match}/>
-        </div>
-      </div> 
+    <section>
+      <div className="media">
+      <PostLists dataImg={allFavs} match={match}/>
+      
+      </div>
     </section>
   )
 }

@@ -109,8 +109,7 @@ class PostOne extends Component {
 
     
     return (
-      <div>
-          <div className="col l3 m6 s12">
+      <div className="col">
             {postImage}
               
           {/* {typeof border !== 'undefined' ?
@@ -125,7 +124,6 @@ class PostOne extends Component {
             
             </div>
             
-      </div>
     )
   }
 }

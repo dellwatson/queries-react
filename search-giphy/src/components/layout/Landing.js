@@ -24,28 +24,43 @@ class Landing extends Component {
     const { dataImg, match } = this.props;
 
     return (
-        <section className="setion">
-            <div className="container">
-                <div className="row">
-                    <div className="col s12">
-                        <div className="row">
-                            <div className="input-field col s12 m8 push-m2">
-                            {/* <form onSubmit={this.handleSubmit} > */}
-                                <input 
+        <section>
+            <div className="search-content">
+             {/* <form onSubmit={this.handleSubmit} > */}
+             <input 
                                     type="text"
                                     placeholder="Search for..." 
                                     id="query" 
                                     onChange={this.handleChange} 
                                     />
                                 {/* </form>      */}
-                            </div>
-                        </div>
-                            
-                    </div>
-                </div>
                 
-                    <PostLists dataImg={dataImg} match={match} />
+            
             </div>
+                           
+
+                           <div className="media">
+                           <div className="column">
+                           
+                           {dataImg && dataImg.data.map((item,index) => {
+                                   return (
+                                        <img 
+                    className="responsive-img"
+                    src={item.images.downsized.url} 
+                    alt={index} 
+ 
+                    max-width="300"
+                    max-height="200"
+                    overflow="hidden"            
+                />
+                                    )
+                                })}
+                           
+                           
+                           </div>
+                                
+                           </div>
+                           
         </section>
         
     )

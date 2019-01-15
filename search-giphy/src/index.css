@@ -35,3 +35,19 @@ main {
   text-align: center;
 
 }
+
+  .this-icon {
+    float:right;
+
+    position: relative;
+    bottom:30px; 
+    line-height: 0px;
+  }
+
+  .box-img{
+    background-color: red;
+    position:relative;
+    color:black;
+    margin:auto;
+    padding:auto;
+  }

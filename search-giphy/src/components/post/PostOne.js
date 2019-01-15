@@ -102,7 +102,8 @@ class PostOne extends Component {
                     onMouseLeave={this.hoverOff}
                     width="200"
                     height="100"
-                    overflow="hidden"            
+                    // overflow="hidden"       
+                        
                 />
         )
     }
@@ -111,7 +112,14 @@ class PostOne extends Component {
     return (
       <div>
           <div className="col l3 m6 s12">
-            {postImage}
+          <div className="box-img">
+          {postImage}
+
+            <i className="material-icons this-icon"
+            
+            >favorite_border </i>
+          
+          </div>
               
           {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)

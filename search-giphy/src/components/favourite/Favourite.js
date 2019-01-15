@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import PostLists from '../post/PostLists'
 
-const Favourite = (props) => {
-
-  const { allFavs, match } = props;
+class Favourite extends Component {
+render(){
+  const { allFavs, match } = this.props;
 
   return (
     <section className="section">
       <div className="container">
         <div className="row">
-        HI
           <PostLists dataImg={allFavs} match={match}/>
         </div>
       </div> 
     </section>
   )
+
+}
 }
 
 const mapStateToProps = (state) => {
@@ -24,4 +26,4 @@ const mapStateToProps = (state) => {
         allFavs: state.fav.faved
     }
 }
-export default connect(mapStateToProps)(Favourite)
+export default connect(mapStateToProps)(Favourite);

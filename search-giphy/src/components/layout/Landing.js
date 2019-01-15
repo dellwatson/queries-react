@@ -24,7 +24,7 @@ class Landing extends Component {
     const { dataImg, match } = this.props;
 
     return (
-        <section className="setion">
+        <section className="section">
             <div className="container">
                 <div className="row">
                     <div className="col s12">

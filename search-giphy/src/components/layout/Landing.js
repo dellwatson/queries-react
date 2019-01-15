@@ -39,27 +39,35 @@ class Landing extends Component {
             </div>
                            
 
-                           <div className="media">
-                           <div className="column">
-                           
-                           {dataImg && dataImg.data.map((item,index) => {
-                                   return (
-                                        <img 
-                    className="responsive-img"
-                    src={item.images.downsized.url} 
-                    alt={index} 
- 
-                    max-width="300"
-                    max-height="200"
-                    overflow="hidden"            
-                />
-                                    )
-                                })}
-                           
-                           
-                           </div>
-                                
-                           </div>
+<div className="media">
+
+
+
+
+{dataImg && dataImg.data.map((item,index) => {
+    return (
+
+        // <div className="box-img">
+
+
+        <img 
+// className="responsive-img"
+src={item.images.downsized.url} 
+alt={index} 
+
+
+// overflow="hidden"            
+/>
+// </div>
+
+    
+    
+    )
+})}
+</div>
+
+
+
                            
         </section>
         

@@ -1,17 +1,10 @@
-// import axios from 'axios';
-// import apiKey from '../../apiKey';
-// http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=5TUqp9G5hAZiuT7QPGfVHdMJ2hntCN6Z&limit=5
-
+import { apiKey } from '../../apiKey';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 
-export const getInfo = (info) => {
-
-    const apiKey = '5TUqp9G5hAZiuT7QPGfVHdMJ2hntCN6Z';
-
+export const getInfo = (info, add) => {
+    const apiKeyy = apiKey;
     return (dispatch, getState) => {
-        // ...info send state(..info ?)search
-        // dispatch({ type: 'GET_INFO', info});
-        fetch(`http://api.giphy.com/v1/gifs/search?q=${info}&api_key=${apiKey}&limit=8`)
+        fetch(`http://api.giphy.com/v1/gifs/search?q=${info}&api_key=${apiKeyy}&limit=${add}`)
             .then(res => res.json())
             .then((json) => dispatch(receivedPosts(json)))
             .catch(err => dispatch())

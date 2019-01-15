@@ -5,19 +5,25 @@ import PostLists from '../post/PostLists'
 
 class Landing extends Component {
     state = {
-        query: ""
+        query: "",
+        add: 8
         }
 
     handleChange = (e) => {
         this.setState({
             [e.target.id] : e.target.value
         }, () => {
-            this.props.getInfo(this.state.query)
+            this.props.getInfo(this.state.query, 8)
         })
     }
-    
-    handleSubmit = (e) => {
-        e.preventDefault()
+
+    handleMore = () => {
+        const addMore = this.state.add;
+        this.setState({
+            add: addMore + 8
+        }, () => {
+            this.props.getInfo(this.state.query,this.state.add)
+        })
     }
 
   render() {
@@ -30,24 +36,22 @@ class Landing extends Component {
                     <div className="col s12">
                         <div className="row">
                             <div className="input-field col s12 m8 push-m2">
-                            {/* <form onSubmit={this.handleSubmit} > */}
                                 <input 
+                                    className ="text-input"
                                     type="text"
                                     placeholder="Search for..." 
                                     id="query" 
-                                    onChange={this.handleChange} 
+                                    onChange={this.handleChange}
+                                    onKeyPress={this.handleChange}
                                     />
-                                {/* </form>      */}
                             </div>
+                            <a className="waves-effect waves-light btn-small right" onClick={this.handleMore}>Add More</a>
                         </div>
-                            
                     </div>
                 </div>
             </div>
             <PostLists dataImg={dataImg} match={match} />
-         
         </section>
-        
     )
   }
 }
@@ -60,7 +64,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      getInfo : (info) => dispatch(getInfo(info))
+      getInfo : (info,add) => dispatch(getInfo(info,add))
     }
   }
 

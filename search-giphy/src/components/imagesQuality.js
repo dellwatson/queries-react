@@ -1,1 +1,0 @@
-export  const imgQuality = 'downsized_still.url'

@@ -16,9 +16,8 @@ const Navbar = (props)  => {
           <div className="container">
             <ul className="left ">
               <li><NavLink to='/' className="nav-home black-text" >Home</NavLink></li>
-              <li><NavLink to='/ok' className="nav-home black-text" >oK</NavLink></li>
-
-              <li><NavLink to='/fav 'className="black-text">Favourites {fav.length>0 ? `(${fav.length})`:null}</NavLink></li>
+              <li><NavLink to='/favourite'className="black-text">Favourite</NavLink></li>
+              <li className="black-text">{fav.length>0 ? `(${fav.length})`:null} </li>
             </ul>
           </div>
         </div>

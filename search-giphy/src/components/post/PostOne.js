@@ -7,7 +7,7 @@ import Spinner from '../common/Spinner';
 class PostOne extends Component {
     constructor(props){
         super(props)
-        if(this.props.match.url === '/fav'){
+        if(this.props.match.url === '/favourite'){
             this.state = {
                 loveOn: true,
                 hoverOn: false
@@ -50,7 +50,7 @@ class PostOne extends Component {
     handleClick = () => {
         let gif = '';
         //send url + id to reducer and true
-        if(this.props.match.url === '/fav'){
+        if(this.props.match.url === '/favourite'){
             gif = this.props.item
             this.props.removeLike(gif)
             this.setState({

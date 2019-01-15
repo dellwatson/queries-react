@@ -109,15 +109,18 @@ class PostOne extends Component {
     <div>
         {/* <div className="box-img col l4 m6 s12"> */}
         {postImage}
-          {/* {typeof border !== 'undefined' ?
-                (<p className="red-text">LIKED</p>)
-                :
-                null}
+        {/* <i className="material-icons this-icon">favorite_border</i>
+        <i className="material-icons this-icon">favorite</i> */}
 
-          {typeof border === 'undefined' && this.state.hoverOn ? 
-                (<div>HI</div>) 
-                : 
-                null} */}
+        {typeof border !== 'undefined' ?
+            (<i className="material-icons this-icon">favorite</i>)
+            :
+            null}
+
+        {typeof border === 'undefined' && this.state.hoverOn ? 
+            (<i className="material-icons this-icon">favorite_border</i>) 
+            : 
+            null}
         </div>
     )
   }

@@ -84,9 +84,9 @@ class PostOne extends Component {
         :
         itemSrc = item 
 
-    // const border = arrFavs && arrFavs.find((item) => {
-    //     return item === itemSrc
-    // })
+    const border = arrFavs && arrFavs.find((item) => {
+        return item === itemSrc
+    })
 
     let postImage;
     if( item === null || Object.keys(item).length === 0){
@@ -116,9 +116,9 @@ class PostOne extends Component {
           {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)
                 :
-                null} */}
+                null}
 
-          {/* {typeof border === 'undefined' && this.state.hoverOn ? 
+          {typeof border === 'undefined' && this.state.hoverOn ? 
                 (<div>HI</div>) 
                 : 
                 null} */}

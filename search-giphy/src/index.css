@@ -8,30 +8,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-/* 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  padding:10px
+.nav-wrapper {
+  margin-top:2px;
+  margin-bottom:2px;
+
+
 }
 
-main {
-  flex: 1 0 auto;
-} */
+.brand {
+  margin-left: 30px;
+}
 
+.brand-easy {
+  margin-right: 20px;
+
+  padding-right: 10px;
+}
+
+.nav-home {
+  padding-left: 30px;
+}
 
 .footer {
   position:fixed;
   left:0;
   bottom:0;
   width: 100%;
-  background-color: grey;
+  background-color: #E6E5E5;
   color: black;
   text-align: center;
-
 }

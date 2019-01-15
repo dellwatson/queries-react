@@ -7,7 +7,7 @@ const Footer = ()  => {
         <div className="footer-copyright">
             <div className="container">
                 <ul className="left">Gallereasy POC web app</ul>
-                <ul className="right">2359 Media</ul>
+                <ul className="right">2359Media</ul>
             </div>
         </div>
       </footer>

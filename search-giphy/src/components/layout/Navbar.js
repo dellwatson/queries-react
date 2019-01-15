@@ -2,7 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom'
 
-const Navbar = ({fav})  => {
+const Navbar = (props)  => {
+
+  const { fav } = props
   
     return (
       <nav className="nav-wrapper white">

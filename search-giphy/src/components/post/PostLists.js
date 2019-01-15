@@ -3,6 +3,7 @@ import PostOne from './PostOne'
 import isEmpty from './is-empty'
 
 const PostLists = ({ dataImg, match }) => {
+    console.log(dataImg)
 
   return (
     <div className='container'>

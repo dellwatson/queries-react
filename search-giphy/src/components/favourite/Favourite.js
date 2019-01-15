@@ -10,6 +10,7 @@ const Favourite = (props) => {
     <section className="section">
       <div className="container">
         <div className="row">
+        HI
           <PostLists dataImg={allFavs} match={match}/>
         </div>
       </div> 
@@ -18,7 +19,7 @@ const Favourite = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state)
+    console.log(state)
     return {
         allFavs: state.fav.faved
     }

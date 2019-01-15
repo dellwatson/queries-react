@@ -107,7 +107,7 @@ class PostOne extends Component {
     
     return (
     <div>
-        <div className="box-img col l4 m6 s12">
+        {/* <div className="box-img col l4 m6 s12"> */}
         {postImage}
           {/* {typeof border !== 'undefined' ?
                 (<p className="red-text">LIKED</p>)
@@ -119,7 +119,6 @@ class PostOne extends Component {
                 : 
                 null} */}
         </div>
-    </div>
     )
   }
 }

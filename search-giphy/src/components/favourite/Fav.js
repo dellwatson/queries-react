@@ -8,11 +8,7 @@ class Fav extends Component {
 
     return (
       <section className="section">
-        <div className="container">
-          <div className="row">
-            <PostLists dataImg={allFavs} match={match}/>
-          </div>
-        </div> 
+        <PostLists dataImg={allFavs} match={match}/>
       </section>
     )
   }

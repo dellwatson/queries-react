@@ -6,7 +6,7 @@ const PostLists = ({ dataImg, match }) => {
 
   return (
     <div className='container'>
-        <div className="row">
+        <div className="grid-box">
             {!isEmpty(dataImg) ? 
             (match.url === '/' ?  
                 dataImg.data.map((item,index) => {

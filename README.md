@@ -1,1 +1,1 @@
-# queries-react
+# search giphy

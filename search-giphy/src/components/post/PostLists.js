@@ -1,9 +1,9 @@
 import React from 'react'
 import PostOne from './PostOne'
 import isEmpty from './is-empty'
+import FetchMore from '../common/FetchMore'
 
 const PostLists = ({ dataImg, match }) => {
-
   return (
     <div className="container">
         <div className="grid-box">
@@ -15,6 +15,7 @@ const PostLists = ({ dataImg, match }) => {
                 )
             : null}
         </div>
+        {!isEmpty(dataImg) && match.url === '/' ? (<FetchMore />) : null}
     </div>
   )
 }

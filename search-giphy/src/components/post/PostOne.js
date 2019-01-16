@@ -69,7 +69,7 @@ class PostOne extends Component {
     }
 
   render() {
-    const { item, index, arrFavs, match } = this.props;
+    const { item, index, arrFavs, match, loading} = this.props;
     let itemSrc = "";
     match.url === '/' ? 
         itemSrc = item.images.downsized.url
@@ -79,7 +79,7 @@ class PostOne extends Component {
     const border = arrFavs && arrFavs.find(item => item === itemSrc)
 
     let postImage;
-    if( item === null || Object.keys(item).length === 0){
+    if( item === null || loading || Object.keys(item).length === 0){
         postImage = <Spinner />
     }else{
         postImage = (
@@ -97,10 +97,10 @@ class PostOne extends Component {
     return (
         <div>
             {postImage}
-                {typeof border !== 'undefined' ?
-                (<i className="material-icons this-icon">favorite</i>)
+                {typeof border === 'undefined' || loading ?
+                null
                 :
-                null}
+                (<i className="material-icons this-icon">favorite</i>)}
 
                 {typeof border === 'undefined' && this.state.hoverOn ? 
                 (<i className="material-icons this-icon">favorite_border</i>) 
@@ -113,7 +113,8 @@ class PostOne extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        arrFavs: state.fav.faved
+        arrFavs: state.fav.faved,
+        loading: state.show.loading,
     }
 }
 

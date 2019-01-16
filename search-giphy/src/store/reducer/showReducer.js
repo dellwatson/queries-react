@@ -22,8 +22,7 @@ const show = ( state = initState, action ) => {
         case 'GET_INFO':
             return {
                 ...state,
-                loading:true,
-                info: action.info,
+                info: action.info
             }
         case 'RECEIVE_POSTS':
             return {
